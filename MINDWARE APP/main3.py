@@ -122,7 +122,7 @@ class MainApplication:
     #NOTE CREATE OPENCV INSTANCE
     def StartServo(self):
         if self.servo_instance is None:
-            self.servo_instance = ServoCommunication(self.servo_panel, self.target_x)
+            self.servo_instance = ServoCommunication(self.servo_panel, self.target_x, self.target_y)
             self.tk.update_idletasks()
 
 
@@ -150,56 +150,153 @@ class MainApplication:
             self.panda_instance.change_Camview()
 
 
+
 class ServoCommunication(tk.Frame):
-    def __init__(self, parent_tk_widget, target_x = None):
+    def __init__(self, parent_tk_widget, target_x=None, target_y = None):
         super().__init__(parent_tk_widget)
+        self.servo_AngleX = target_x or 750  # Default angle
+        self.servo_AngleY = target_y or 750  # Default angle
+        self.servo_ID = 13
+        self.COMMS_PORT = 'COM4'
+        self.BAUDRATE = 115200
+        self.SERVO_LIMITS = [0, 1500]
+        self.arduino = None
 
-        self.target = target_x
-        # Initialize serial connection
-        self.parent = parent_tk_widget
-
-        super().__init__()
+        # UI Setup
         self['bg'] = '#262626'
-
-       #NOTE CELL TO PACK LOCALLY
-        self.render_container = tk.Frame(self)
+        self.render_container = tk.Frame(self, bg='#262626')
         self.render_container.grid(row=1, column=0, sticky="nsew", padx=5, pady=5)
-        #container_frame.config( height = 1, width = 20 )
 
-        #NOTE DISABLE PANDA 3D FRAME
-        self.descriptionLabel = tk.Label(self.render_container, text="Enter Command")
+        self.descriptionLabel = tk.Label(self.render_container, text="Enter Command", bg='#262626', fg='white')
         self.descriptionLabel.pack(side=tk.TOP, padx=5, pady=5)
 
-
-       #NOTE ACTIVATE 3D WINDOW, CALLS DEF FROM MAIN APPLICATION PARENT
         self.xAgleEntry = tk.Entry(self.render_container)
         self.xAgleEntry.pack(side=tk.TOP, padx=5, pady=5)
 
-
-       #NOTE ENABLE OPENCV INSTANCE
-        self.sendButton = tk.Button(self.render_container, text="Send", command= self.servo_comms)
-        self.sendButton.config( height = 1, width = 20 )
+        self.sendButton = tk.Button(self.render_container, text="Send", command=self.update_and_move_servo)
+        self.sendButton.config(height=1, width=20)
         self.sendButton.pack(side=tk.TOP, padx=5, pady=5)
 
-        self.arduino = serial.Serial('COM7', 9600, timeout=10)
-        #time.sleep(2) # Wait for Arduino to reset
-        #angle = self.xAgleEntry.get()
+        # Initialize serial
+        self.initialize_communications()
 
-    def servo_comms(self, target_x):
+    def initialize_communications(self):
+        try:
+            self.arduino = serial.Serial(self.COMMS_PORT, self.BAUDRATE, timeout=10)
+            time.sleep(2)  # Wait for Arduino to reset
+            print(f"Communications Established")
+            print(f"Port: {self.COMMS_PORT}")
+            print(f"Speed: {self.BAUDRATE}")
+            self.update_and_move_servo()  # Optional: send default angle
+        except Exception as e:
+            print(f"Failed to initialize communications")
+            print(f"Error: {e}")
 
-        frame_width = 640
-
-        normalized = (target_x - frame_width/2) / (frame_width/2)
-
-        angle = int(90 + normalized * 90)
-
-        angle = max(0, min(180, angle))
-
-        self.arduino.write(f"{angle}\n".encode())
-
-        print(f"Sent: {angle}")
+    def update_and_move_servo(self, x =None, y= None):
+        """Read angle from Entry and move servo."""
+        try:
+            self.servo_AngleX = x
+            self.servo_AngleY = y
 
 
+        except ValueError:
+            print("Invalid input: Please enter an integer.")
+            return
+
+        self.move_servo()
+
+    def move_servo(self):
+        """Send servo command over serial."""
+        if self.arduino is None:
+            print("Serial connection not initialized.")
+            return
+
+        if isinstance(self.servo_AngleX, int) and self.SERVO_LIMITS[0] <= self.servo_AngleX <= self.SERVO_LIMITS[1]:
+            command = f"{13}:{(self.servo_AngleX)-400}\n"
+            self.arduino.write(command.encode())
+            print(f"Sent: {command.strip()}")
+
+            command = f"{14}:{(-self.servo_AngleY)+300}\n"
+            self.arduino.write(command.encode())
+            print(f"Sent: {command.strip()}")
+
+            command = f"{15}:{(self.servo_AngleY)-300}\n"
+            self.arduino.write(command.encode())
+            print(f"Sent: {command.strip()}")
+        else:
+            print("Invalid servo angle. Must be between 0 and 1500.")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
+# class ServoCommunication(tk.Frame):
+#     def __init__(self, parent_tk_widget, target_x = None):
+#         super().__init__(parent_tk_widget)
+#
+#         self.target = target_x
+#         # Initialize serial connection
+#         self.parent = parent_tk_widget
+#
+#         super().__init__()
+#         self['bg'] = '#262626'
+#
+#        #NOTE CELL TO PACK LOCALLY
+#         self.render_container = tk.Frame(self)
+#         self.render_container.grid(row=1, column=0, sticky="nsew", padx=5, pady=5)
+#         #container_frame.config( height = 1, width = 20 )
+#
+#         #NOTE DISABLE PANDA 3D FRAME
+#         self.descriptionLabel = tk.Label(self.render_container, text="Enter Command")
+#         self.descriptionLabel.pack(side=tk.TOP, padx=5, pady=5)
+#
+#
+#        #NOTE ACTIVATE 3D WINDOW, CALLS DEF FROM MAIN APPLICATION PARENT
+#         self.xAgleEntry = tk.Entry(self.render_container)
+#         self.xAgleEntry.pack(side=tk.TOP, padx=5, pady=5)
+#
+#
+#        #NOTE ENABLE OPENCV INSTANCE
+#         self.sendButton = tk.Button(self.render_container, text="Send", command= self.servo_comms)
+#         self.sendButton.config( height = 1, width = 20 )
+#         self.sendButton.pack(side=tk.TOP, padx=5, pady=5)
+#
+#         self.arduino = serial.Serial('COM7', 9600, timeout=10)
+#         #time.sleep(2) # Wait for Arduino to reset
+#         #angle = self.xAgleEntry.get()
+#
+#     def servo_comms(self, target_x):
+#
+#         frame_width = 640
+#
+#         normalized = (target_x - frame_width/2) / (frame_width/2)
+#
+#         angle = int(90 + normalized * 90)
+#
+#         angle = max(0, min(180, angle))
+#
+#         self.arduino.write(f"{angle}\n".encode())
+#
+#         print(f"Sent: {angle}")
+#
+#
 
 
 
@@ -412,7 +509,7 @@ class VideoFeed(): #NOTE OPEN CV MANAGER
             if self.app.panda_instance:
                 self.app.panda_instance.update_target(self.cx, self.cy)
             if self.app.servo_instance:
-                self.app.servo_instance.servo_comms(self.app.target_x)
+                self.app.servo_instance.update_and_move_servo(self.app.target_x, self.app.target_y)
 
             # Resize only for display
             canvas_width = self.canvas.winfo_width() or 330
