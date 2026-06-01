@@ -3,18 +3,30 @@
 
 https://trello.com/b/s4TpBDSD/mindware-v02
 
-Robot control software and board driver for a custom version of the Deagnostini Robi Robot.
-
-https://www.linkedin.com/company/deagostini-japan
+Robot control software and board driver for a custom version of the Deagnostini Robi Robot: 
 https://www.japantrendshop.com/robi-robot-preassembled-version-p-1622.html
 
-They can also be found on second hand on sites like Neokyo, along with many other robots.
+They can also be found on second hand on sites like Neokyo, along with many other robots: 
 https://neokyo.com/en/search/mercari?keyword=robi%20robot&provider=mercari&spid=
+
+This mod and software aims to upgrade generation 1 Robis to support modern software and capabilities and extend the useful life if the robot by allowing anyone who wants cheaper and 
+more open avenues into robotics by creating a more NAO like robot.
+
+This project has kicked off after a period of learning all I could about these robots and similar robots from japan,
+since enrolling in a computer science degree, this project and robot will serve as an additional learning aid where I can implement 
+what I have learned to create a complete robotics project.
+
+In addition to new software, this mod adds a range of new sensors, custom control boards and lively LCD eyes.
+I will eventually make the new driver board compatible with a range of servo brands to allow building from scratch
+with more available robotics servos. By working with the restraint of such a small robot, I can focus on smaller components
+and create a board that can be used in a larger viariety of diy bots.
+
+Some Robi parts have been scanned and modified to allow fitting of new hardware with minimal to no damage of the original parts.
 
 The main software is written in python, it sends ID and position commands to a C++ driver on the ESP32 C3 mini.
 The ESP32 then processes commands and sends them to the servo bus, daisy chaining is working.
 
-NOTE: Thhe ESP32 will be swapped with a custom RP2040 board.
+NOTE: The ESP32 will be swapped with a custom RP2040 board.
 
 ### Example Command:
 ```
@@ -25,15 +37,13 @@ ID:ANGLE
 ![Alt text](Circuit_Board_Files/Servo_Board/Capture.PNG)
 ![Alt text](Documentation/Diagrams/Export/RobiServoLayout.png)
 
-
-
 I am yet to implement the additional serial ports, ideally I would like to work with 5, however that is unlikely. S0 the alternative 
 will be to use 2 or 3 ports and alternate the less critical ones. That way parts of the robot dont have communications interupted as this could be bad, ie: the legs.
-NOTE: The new RP2040 board will allow 5 multi single wire serials via PIO state machines, so the limitation is removed.
+NOTE: The new RP2040 board will allow 5 single wire serials via PIO state machines, so the limitation is removed.
 
 ## Hardware:
 - Robi servo test board (I will link to an alternative that emulates the same functions in future. It is for setting the ID and testing the motor)
-- ESP32 C3 Mini
+- ESP32 C3 Mini NOTE: PHASE OUT
 - 3.3v-5v Bi-directional logic converter (C3 mini outputs 3.3v logic while the servo requires 5v logic, bi-directional opens up the possibility of adding servo feedback)
 - 5v Power supply
 - OrangePi Zero 2w or Raspi Zero 2w (More ram the better, Recommended minimum is 4GB)
