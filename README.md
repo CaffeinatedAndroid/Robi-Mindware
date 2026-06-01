@@ -1,9 +1,16 @@
 ![Alt text](RepoImage.png)
 # Robi Mindware (PENDING UPDATES)
 
-
 https://trello.com/b/s4TpBDSD/mindware-v02
+
 Robot control software and board driver for a custom version of the Deagnostini Robi Robot.
+
+https://www.linkedin.com/company/deagostini-japan
+https://www.japantrendshop.com/robi-robot-preassembled-version-p-1622.html
+
+They can also be found on second hand on sites like Neokyo, along with many other robots.
+https://neokyo.com/en/search/mercari?keyword=robi%20robot&provider=mercari&spid=
+
 The main software is written in python, it sends ID and position commands to a C++ driver on the ESP32 C3 mini.
 The ESP32 then processes commands and sends them to the servo bus, daisy chaining is working.
 
