@@ -5,7 +5,9 @@ The main software is written in python, it sends ID and position commands to a C
 The ESP32 then processes commands and sends them to the servo bus, daisy chaining is working.
 NOTE: Thhe ESP32 will be swapped with a custom RP2040 board.
 
-[https://trello.com/b/s4TpBDSD/mindware-v02.html](https://trello.com/invite/b/6a0840ecf1cb0c3770e7da4c/ATTI8a3108903375cfedfbd80fe4476dc1db03975149/mindware-v02)
+
+<iframe src="https://trello.com/b/s4TpBDSD/mindware-v02.html"></iframe>
+
 
 ### Example Command:
 ```
