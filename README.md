@@ -21,6 +21,8 @@ I will eventually make the new driver board compatible with a range of servo bra
 with more available robotics servos. By working with the restraint of such a small robot, I can focus on smaller components
 and create a board that can be used in a larger viariety of diy bots.
 
+![Alt text](Documentation/Diagrams/Export/Timeline.png)
+
 Some Robi parts have been scanned and modified to allow fitting of new hardware with minimal to no damage of the original parts.
 
 The main software is written in python, it sends ID and position commands to a C++ driver on the ESP32 C3 mini.
