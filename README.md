@@ -10,6 +10,9 @@ ID:ANGLE
 12:130
 15:30
 ```
+![Alt text](Robi Mindware/Documentation/Diagrams/Export/Robi Servo Layout.png)
+
+
 
 I am yet to implement the additional serial ports, ideally I would like to work with 5, however that is unlikely. SO the alternative 
 will be to use 2 or 3 ports and alternate the less critical ones. That way parts of the robot dont have communications interupted as this could be bad, ie: the legs.
