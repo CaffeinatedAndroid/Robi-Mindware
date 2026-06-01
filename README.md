@@ -6,7 +6,7 @@ https://trello.com/b/s4TpBDSD/mindware-v02
 Robot control software and board driver for a custom version of the Deagnostini Robi Robot: 
 https://www.japantrendshop.com/robi-robot-preassembled-version-p-1622.html
 
-They can also be found on second hand on sites like Neokyo, along with many other robots: 
+They can also be found for less than $250 on second hand on sites like Mecari japan through Neokyo, along with many other robots: 
 https://neokyo.com/en/search/mercari?keyword=robi%20robot&provider=mercari&spid=
 
 This mod and software aims to upgrade generation 1 Robis to support modern software and capabilities and extend the useful life of the robot by allowing anyone who wants cheaper and 
