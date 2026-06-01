@@ -15,7 +15,7 @@ ID:ANGLE
 12:130
 15:30
 ```
-![Alt text](Circuit_Board_Files/Servo_Board/Capture.png)
+![Alt text](Circuit_Board_Files/Servo_Board/Capture.PNG)
 ![Alt text](Documentation/Diagrams/Export/RobiServoLayout.png)
 
 
