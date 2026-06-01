@@ -10,7 +10,7 @@ ID:ANGLE
 12:130
 15:30
 ```
-![Alt text](Robi Mindware/Documentation/Diagrams/Export/Robi Servo Layout.png)
+![Alt text](/Mindware Kernal/Documentation/Diagrams/Export/Robi Servo Layout.png)
 
 
 
