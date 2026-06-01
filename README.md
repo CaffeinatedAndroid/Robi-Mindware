@@ -1,8 +1,9 @@
 ![Alt text](RepoImage.png)
-# Robot Mindware
+# Robi Mindware (PENDING UPDATES)
 Robot control software and board driver for a custom version of the Deagnostini Robi Robot.
 The main software is written in python, it sends ID and position commands to a C++ driver on the ESP32 C3 mini.
 The ESP32 then processes commands and sends them to the servo bus, daisy chaining is working.
+NOTE: Thhe ESP32 will be swapped with a custom RP2040 board.
 
 ### Example Command:
 ```
@@ -14,8 +15,9 @@ ID:ANGLE
 
 
 
-I am yet to implement the additional serial ports, ideally I would like to work with 5, however that is unlikely. SO the alternative 
+I am yet to implement the additional serial ports, ideally I would like to work with 5, however that is unlikely. S0 the alternative 
 will be to use 2 or 3 ports and alternate the less critical ones. That way parts of the robot dont have communications interupted as this could be bad, ie: the legs.
+NOTE: The new RP2040 board will allow 5 multi single wire serials via PIO state machines, so the limitation is removed.
 
 ## Hardware:
 - Robi servo test board (I will link to an alternative that emulates the same functions in future. It is for setting the ID and testing the motor)
