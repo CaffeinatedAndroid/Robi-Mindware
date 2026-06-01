@@ -1,11 +1,13 @@
 ![Alt text](RepoImage.png)
 # Robi Mindware (PENDING UPDATES)
+
+
+https://trello.com/b/s4TpBDSD/mindware-v02
 Robot control software and board driver for a custom version of the Deagnostini Robi Robot.
 The main software is written in python, it sends ID and position commands to a C++ driver on the ESP32 C3 mini.
 The ESP32 then processes commands and sends them to the servo bus, daisy chaining is working.
-NOTE: Thhe ESP32 will be swapped with a custom RP2040 board.
 
-https://trello.com/b/s4TpBDSD/mindware-v02
+NOTE: Thhe ESP32 will be swapped with a custom RP2040 board.
 
 ### Example Command:
 ```
@@ -13,6 +15,7 @@ ID:ANGLE
 12:130
 15:30
 ```
+![Alt text](Circuit Board Files/Servo Board/Capture.png)
 ![Alt text](Documentation/Diagrams/Export/RobiServoLayout.png)
 
 
