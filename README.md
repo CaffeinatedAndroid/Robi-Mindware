@@ -76,3 +76,11 @@ The site is in Japanese so use google translate if needed. They also have a yout
 - https://www.mcc.mbsrv.net/robox/index.html
 - https://www.youtube.com/@craftoyaji
 
+
+##Additional Useful Sites
+
+I will continue to add more
+
+https://win.adrirobot.it/menu_new/index/index_robi.htm
+
+https://it.emcelettronica.com/levaluation-kit-xmc-2go-di-infineon-come-scheda-sensori-i-robot-robi
