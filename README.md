@@ -51,6 +51,9 @@ NOTE: The new RP2040 board will allow 5 single wire serials via PIO state machin
 - OrangePi Zero 2w or Raspi Zero 2w (More ram the better, Recommended minimum is 4GB)
 - REMAINING PARTS TBC
 
+![Alt text](Documentation/Diagrams/Export/HardwareStack.png)
+
+
 ### Picking The Robot:
 - Robi 1 or 2 
 When selecting a Robi, pick a damaged one or a hand assembled one. There is no point in ruining a good unit when you will need to dissasemble it anyway.
