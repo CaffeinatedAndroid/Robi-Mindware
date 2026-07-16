@@ -304,6 +304,7 @@ class Application(ctk.CTk):
 
         h, w = rgb.shape[:2]
 
+        # WARP LEFT AND RIGHT EYE FOR PREVIEW
         src = np.float32([
             [0, 0],
             [w, 0],
@@ -331,13 +332,14 @@ class Application(ctk.CTk):
         left = cv2.warpPerspective(rgb, M_left, (w, h))
         right = cv2.warpPerspective(rgb, M_right, (w, h))
 
-        # ----- Display resolution -----
-        DISPLAY_W = 125      # change to 480 if desired
+        # PART OF WARP FOR PREVIEW
+        DISPLAY_W = 125
         DISPLAY_H = 160
 
         left = cv2.resize(left, (DISPLAY_W, DISPLAY_H), interpolation=cv2.INTER_NEAREST)
         right = cv2.resize(right, (DISPLAY_W, DISPLAY_H), interpolation=cv2.INTER_NEAREST)
 
+        # UPDATE PREVIEW FRAMES
         self.left_photo = ImageTk.PhotoImage(Image.fromarray(left))
         self.right_photo = ImageTk.PhotoImage(Image.fromarray(right))
 
@@ -345,26 +347,29 @@ class Application(ctk.CTk):
         self.canvas.itemconfig(self.anim_id2, image=self.right_photo)
 
 
-    def setLayer(self, name, layer):
-        obj = self.getObject(name)
-        if obj:
-            obj["layer"] = layer
-
-
-    def bringToFront(self, name):
-        highest = max(o.get("layer", 0) for o in self.scene)
-
-        obj = self.getObject(name)
-        if obj:
-            obj["layer"] = highest + 1
-
-
-    def sendToBack(self, name):
-        lowest = min(o.get("layer", 0) for o in self.scene)
-
-        obj = self.getObject(name)
-        if obj:
-            obj["layer"] = lowest - 1
+    ## NOTE MAY NOT NEED
+    # def setLayer(self, name, layer):
+    #     obj = self.getObject(name)
+    #     if obj:
+    #         obj["layer"] = layer
+    #
+    #
+    ## NOTE MAY NOT NEED
+    # def bringToFront(self, name):
+    #     highest = max(o.get("layer", 0) for o in self.scene)
+    #
+    #     obj = self.getObject(name)
+    #     if obj:
+    #         obj["layer"] = highest + 1
+    #
+    #
+    ## NOTE MAY NOT NEED
+    # def sendToBack(self, name):
+    #     lowest = min(o.get("layer", 0) for o in self.scene)
+    #
+    #     obj = self.getObject(name)
+    #     if obj:
+    #         obj["layer"] = lowest - 1
 
 
     def setProperty(self, name, key, value):
