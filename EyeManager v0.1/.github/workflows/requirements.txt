@@ -1,0 +1,6 @@
+customtkinter
+CTkColorPicker
+numpy
+opencv-python
+Pillow
+pyinstaller
