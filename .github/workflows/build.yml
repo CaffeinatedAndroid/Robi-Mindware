@@ -35,4 +35,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: EyeManager-Windows
-          path: EyeManager/dist/EyeManager.exe
+          path: EyeManager_v0.1/dist/EyeManager.exe
