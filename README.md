@@ -19,7 +19,10 @@ I will eventually make the new driver board compatible with a range of servo bra
 with more available robotics servos. By working with the restraint of such a small robot, I can focus on smaller components
 and create a board that can be used in a larger viariety of diy bots.
 
+![Alt text](Documentation/Diagrams/Timeline_Images/Testing.jpg)
 ![Alt text](Documentation/Diagrams/Timeline_Images/powerup.jpg)
+Powering up and verifying the new custom breakout, a 3rd revision will be created to address a few issues with the current implementation. The eyes currently run on a C bit banged driver due to SPI and overlay issues on the Orangepi and python bit banging is far too slow, This will be addressed by splitting all signals and using my modified devicetree and overlays.
+
 ![Alt text](Documentation/Diagrams/Export/Timeline.png)
  
 Some Robi parts have been scanned and modified to allow fitting of new hardware with minimal to no damage of the original parts.
