@@ -41,11 +41,11 @@ ID:ANGLE
 
 I am yet to implement the additional serial ports, ideally I would like to work with 5, however that is unlikely. S0 the alternative 
 will be to use 2 or 3 ports and alternate the less critical ones. That way parts of the robot dont have communications interupted as this could be bad, ie: the legs.
-NOTE: The new RP2040 board will allow 5 single wire serials via PIO state machines, so the limitation is removed.
+NOTE: Development on a RP2350B based microcontroller board is under development and is waiting for some additional validation before I order the boards to be made.
 
 ## Hardware:
 - Robi servo test board (I will link to an alternative that emulates the same functions in future. It is for setting the ID and testing the motor)
-- ESP32 C3 Mini NOTE: PHASE OUT
+- ESP32 C3 Mini NOTE: FOR INITIAL DEVELOPMENT
 - 3.3v-5v Bi-directional logic converter (C3 mini outputs 3.3v logic while the servo requires 5v logic, bi-directional opens up the possibility of adding servo feedback)
 - 5v Power supply
 - OrangePi Zero 2w or Raspi Zero 2w (More ram the better, Recommended minimum is 4GB)
