@@ -22,7 +22,7 @@ with more available robotics servos. By working with the restraint of such a sma
 and create a board that can be used in a larger viariety of diy bots.
 
 ![Alt text](Documentation/Diagrams/Export/Timeline.png)
-
+ 
 Some Robi parts have been scanned and modified to allow fitting of new hardware with minimal to no damage of the original parts.
 
 The main software is written in python, it sends ID and position commands to a C++ driver on the ESP32 C3 mini.
