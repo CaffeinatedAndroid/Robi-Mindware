@@ -42,10 +42,12 @@ ID:ANGLE
 ![Alt text](Documentation/Diagrams/Export/RobiServoLayout.png)
 
 Testing with a single communication bus, timing issues and missed messages are an issue that will be resolved with the RP2350B PIO that will allow dedicated channels for each servo chain.
+
 ![Alt text](Documentation/Timeline_Images/Videos/waveTest.gif)
 
 ![Alt text](Documentation/Timeline_Images/Videos/singleBusTest.gif)
-Here timing issues are very clear. There was lots of funny and awkward runs where I was able to at least guage the enxt step I needed to take.
+
+Here timing issues are very clear. There was lots of funny and awkward runs where I was able to at least guage the next step I needed to take.
 
 
 Development on a RP2350B based microcontroller board is under development and is waiting for some additional validation before I order the boards to be made. This lets me split each servo chain into dedicated channels, that way parts of the robot dont have communications interupted as this could be bad, ie: the legs.
