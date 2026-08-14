@@ -1,8 +1,6 @@
 ![Alt text](RepoImage.png)
 # Robi Mindware (PENDING UPDATES)
 
-https://trello.com/b/s4TpBDSD/mindware-v02
-
 Robot control software and board driver for a custom version of the Deagnostini Robi Robot: 
 https://www.japantrendshop.com/robi-robot-preassembled-version-p-1622.html
 
